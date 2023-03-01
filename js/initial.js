@@ -5,9 +5,7 @@ let intervalId;
 function formSubmit(e) {
     e.preventDefault();
     intervalId = setInterval(checkChallengeStatus, 2500);
-    console.log("submit event: ", e);
-    console.log(this);
-    this.submit();
+    // this.submit();
 }
 
 document.getElementById("form").onsubmit = formSubmit;
@@ -17,7 +15,10 @@ document.getElementById("form").onsubmit = formSubmit;
 async function checkChallengeStatus() {
     try {
         const response = await fetch(`${SERVER_BASE_URL}/status`);
-        if (response.status === 200) {
+        const data = await response.json();
+
+        if (response.status === 200 && data.status === "SUCCESS") {
+            clearInterval(intervalId);
             window.location.assign("/success");
         }
     } catch (err) {

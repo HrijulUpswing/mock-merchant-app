@@ -24,14 +24,19 @@ app.post("/notification", (_, res) => {
 });
 
 app.get("/status", (_, res) => {
-    if (fs.existsSync(__dirname + "/success")) {
-        res.status(200).json({ status: "SUCCESS" });
-        fs.unlink(__dirname + "/success", (err) => {
-            if (err) {
-                console.error("There was an error while deleting the success file: ", err);
-            }
-        });
+    const successFile = __dirname + "/success";
+
+    if (!fs.existsSync(successFile)) {
+        res.status(200).json({ status: "PENDING" });
+        return;
     }
+
+    res.status(200).json({ status: "SUCCESS" });
+    fs.unlink(__dirname + "/success", (err) => {
+        if (err) {
+            console.error("There was an error while deleting the success file: ", err);
+        }
+    });
 });
 
 app.listen(PORT, () => {
