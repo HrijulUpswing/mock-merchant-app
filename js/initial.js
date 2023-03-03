@@ -63,6 +63,9 @@ async function checkChallengeStatus() {
         if (response.status === 200 && data.status === "SUCCESS") {
             clearInterval(intervalId);
             window.location.assign("/success");
+        } else if (response.status === 200 && data.status === "FAILURE") {
+            clearInterval(intervalId);
+            window.location.assign("/failure");
         }
     } catch (err) {
         console.error("Something went wrong while checking status: ", err);
@@ -96,8 +99,8 @@ function postRequestWithFormBehaviour(url, body) {
 }
 
 function createIFrame() {
-    const challengeFrame = document.createElement('iframe');
-    challengeFrame.name = 'challengeFrame';
-    challengeFrame.id = 'challengeFrame';
+    const challengeFrame = document.createElement("iframe");
+    challengeFrame.name = "challengeFrame";
+    challengeFrame.id = "challengeFrame";
     document.body.appendChild(challengeFrame);
 }
