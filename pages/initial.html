@@ -8,18 +8,92 @@
 		<title>Form</title>
 	</head>
 	<body>
-		<form id="form" action="https://google.com">
-			<input type="text" name="cardNumber" id="cardNumber" placeholder="Card Number" />
-			<input type="text" name="cvv" placeholder="CVV" />
-			<input
-				type="text"
-				name="purchaseAmount"
-				id="purchaseAmount"
-				placeholder="Amount"
-				mode="numeric"
-			/>
-			<input type="submit" />
-		</form>
+		<nav>Checkout</nav>
+		<section id="product">
+			<div id="productImages">
+				<div id="primaryImageContainer">
+					<div id="primaryImage" class="imageContainer">
+						<img src="product-image.jpg" alt="Product" />
+					</div>
+				</div>
+				<div id="secondaryImagesContainer">
+					<div class="imageContainer secondaryImage">
+						<img src="product-image.jpg" alt="Product" />
+					</div>
+					<div class="imageContainer secondaryImage">
+						<img src="product-image.jpg" alt="Product" />
+					</div>
+					<div class="imageContainer secondaryImage">
+						<img src="product-image.jpg" alt="Product" />
+					</div>
+				</div>
+			</div>
+			<div id="productDetails">
+				<h2>T-800 Action Figure</h2>
+				<div id="rating">
+					<img src="star.svg" alt="star" />
+					<img src="star.svg" alt="star" />
+					<img src="star.svg" alt="star" />
+					<img src="star.svg" alt="star" />
+					<img src="star.svg" alt="star" />
+				</div>
+				<div id="description">
+					<h3>Description</h3>
+					<p>
+						The Cyberdyne Systems Series 800 Terminator, also known as T-800 Terminator,
+						Model T-800, or simply T-800, is a type of Terminator mass-produced by
+						Skynet. The T-800 Terminator was Skynet's first cybernetic organism, with
+						living tissue over a hyperalloy endoskeleton. This made it Skynet's first
+						successful Infiltrator unit.
+					</p>
+				</div>
+				<button id="checkoutButton">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+						/>
+					</svg>
+
+					Checkout
+				</button>
+			</div>
+		</section>
+		<div id="paymentDetails">
+			<form id="paymentDetailsForm" action="https://google.com">
+				<div id="acsBranding">
+					<img src="upswing.svg" alt="Upswing" />
+					<h2>Secure Checkout</h2>
+				</div>
+				<div id="formFields">
+					<input
+						type="text"
+						name="cardNumber"
+						id="cardNumber"
+						placeholder="Card Number"
+					/>
+					<input type="text" name="cvv" placeholder="CVV" />
+					<input
+						type="text"
+						name="purchaseAmount"
+						id="purchaseAmount"
+						placeholder="Amount"
+						mode="numeric"
+					/>
+					<input type="submit" />
+				</div>
+			</form>
+		</div>
+		<div id="loader">
+			<img src="loader.svg" alt="Loading..." />
+		</div>
 		<script src="initial.js" type="text/javascript"></script>
 	</body>
 </html>

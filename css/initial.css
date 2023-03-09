@@ -1,6 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+	--font-display: 'Quicksand', sans-serif;
+	--font-body: 'Work Sans', sans-serif;
+	--background: #0e0c21;
+	--primary: #90bede;
+	--secondary: #ffcae9;
+	--success: #ddffd9;
+	--error: #ff6666;
+	--upswing-primary: #372f84;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: var(--font-display);
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+	margin: 0;
+	line-height: 1.5;
+}
+
 body {
-	font-family: -apple-system, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+	font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	padding: 16px;
+	font-size: 1.25rem;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+	text-transform: uppercase;
+	letter-spacing: 0.5ch;
+	font-weight: 200;
+	margin-bottom: 24px;
 }
 
 form {
@@ -32,4 +83,193 @@ input[type='submit'] {
 	width: 100%;
 	height: 100%;
 	background: white;
+}
+
+#product {
+	display: flex;
+	flex-direction: column;
+	row-gap: 16px;
+	padding: 16px;
+}
+
+#productImages {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	row-gap: 8px;
+	align-self: center;
+}
+
+.imageContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+	border-radius: 16px;
+	border: 1px solid black;
+	overflow: hidden;
+}
+
+#primaryImage {
+	width: 200px;
+	height: 200px;
+}
+
+.secondaryImage {
+	width: 100px;
+	height: 100px;
+}
+
+#secondaryImagesContainer {
+	display: flex;
+	justify-content: center;
+	column-gap: 5%;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#productDetails {
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
+}
+
+#productDetails > h2 {
+	font-weight: 800;
+	line-height: 1;
+}
+
+#rating {
+	display: flex;
+	column-gap: 4px;
+}
+
+#rating > img {
+	width: 16px;
+}
+
+#description {
+	display: flex;
+	flex-direction: column;
+	row-gap: 4px;
+}
+
+#description > h3 {
+	margin-top: 8px;
+	font-weight: 600;
+}
+
+#description {
+	font-size: 0.75rem;
+}
+
+#checkoutButton {
+	display: flex;
+	align-items: center;
+	column-gap: 4px;
+	align-self: flex-start;
+	padding: 12px 16px;
+	outline: none;
+	background: var(--primary);
+	border: none;
+	border-radius: 8px;
+	margin-top: 16px;
+	font-family: var(--font-body);
+	letter-spacing: 0.3ch;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+#checkoutButton > svg {
+	width: 16px;
+	height: 16px;
+}
+
+#paymentDetails {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(8px) saturate(150%);
+}
+
+#acsBranding {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 8px;
+	width: 100%;
+	height: 50%;
+	padding: 16px;
+	border-bottom-left-radius: 32px;
+	border-bottom-right-radius: 32px;
+	background-color: var(--upswing-primary);
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 0.5ch;
+	text-align: center;
+}
+
+#acsBranding > img {
+	max-height: 50%;
+	max-width: 40%;
+}
+
+#paymentDetailsForm {
+	width: 95%;
+	height: 95%;
+	border-radius: 16px;
+	background: white;
+	overflow: auto;
+}
+
+#formFields {
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
+	padding: 16px;
+}
+
+#loader {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(8px) saturate(150%);
+}
+
+@media screen and (min-width: 768px) {
+	#product {
+		flex-direction: row;
+		align-items: center;
+		column-gap: 32px;
+	}
+
+	#paymentDetailsForm {
+		width: 50%;
+		height: 80%;
+		border-radius: 16px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	#paymentDetailsForm {
+		width: 30%;
+	}
 }

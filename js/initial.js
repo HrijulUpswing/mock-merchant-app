@@ -1,7 +1,14 @@
 const SERVER_BASE_URL = 'http://localhost:9000';
 const THREEDS_SERVER_BASE_URL = 'http://localhost:8081';
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 let intervalId;
+
+const loader = document.querySelector('#loader');
+const checkoutButton = document.querySelector('#checkoutButton');
+const paymentDetails = document.querySelector('#paymentDetails');
+const paymentDetailsForm = document.querySelector('#paymentDetailsForm');
 
 async function formSubmit(e) {
 	e.preventDefault();
@@ -11,6 +18,7 @@ async function formSubmit(e) {
 	let threeDsResponse;
 
 	try {
+		showLoader();
 		const response = await fetch(`${THREEDS_SERVER_BASE_URL}/initiateAReq`, {
 			headers: {
 				'Content-Type': 'application/json',
@@ -22,6 +30,8 @@ async function formSubmit(e) {
 		threeDsResponse = await response.json();
 	} catch (err) {
 		console.error('Error while submitting data to 3ds mock server: ', err);
+	} finally {
+		hideLoader();
 	}
 
 	if (threeDsResponse.transactionStatus === 'C') {
@@ -51,7 +61,22 @@ async function formSubmit(e) {
 	intervalId = setInterval(checkChallengeStatus, 2500);
 }
 
-document.getElementById('form').onsubmit = formSubmit;
+checkoutButton.onclick = async () => {
+	showLoader();
+	await sleep(1000);
+	hideLoader();
+	paymentDetails.style.display = 'flex';
+};
+
+paymentDetails.onclick = () => {
+	paymentDetails.style.display = 'none';
+};
+
+paymentDetailsForm.onclick = (e) => {
+	e.stopPropagation();
+};
+
+paymentDetailsForm.onsubmit = formSubmit;
 
 // ====================== utility / helper functions ======================
 
@@ -103,4 +128,12 @@ function createIFrame() {
 	challengeFrame.name = 'challengeFrame';
 	challengeFrame.id = 'challengeFrame';
 	document.body.appendChild(challengeFrame);
+}
+
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+function hideLoader() {
+	loader.style.display = 'none';
 }

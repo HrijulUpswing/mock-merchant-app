@@ -8,6 +8,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'js')));
 app.use(express.static(path.join(__dirname, 'css')));
+app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
