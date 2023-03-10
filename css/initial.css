@@ -67,6 +67,9 @@ input {
 	border: 1px solid black;
 	font-weight: 600;
 	outline-color: #372f84;
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	letter-spacing: 0.2ch;
 }
 
 input[type='submit'] {
@@ -248,6 +251,35 @@ img {
 	max-width: 25%;
 }
 
+#totalAmount {
+	margin-top: 24px;
+	letter-spacing: 0.2ch;
+}
+
+#totalAmount > h5 {
+	font-weight: normal;
+	font-size: 0.7rem;
+}
+
+#totalAmount > p {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.iconHeader {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	font-size: 0.7rem;
+	font-weight: 200;
+	padding: 4px 16px;
+}
+
+.iconHeader > svg {
+	max-width: 16px;
+	max-height: 16px;
+}
+
 #paymentDetailsForm {
 	width: 95%;
 	height: 95%;
@@ -259,7 +291,21 @@ img {
 	display: flex;
 	flex-direction: column;
 	row-gap: 8px;
-	padding: 16px;
+	padding: 0 16px;
+}
+
+#ignoredFields {
+	display: flex;
+	align-items: center;
+	column-gap: 4px;
+}
+
+#ignoredFields > input:first-child {
+	width: 50%;
+}
+
+#ignoredFields > input:last-child {
+	width: 50%;
 }
 
 #loader {

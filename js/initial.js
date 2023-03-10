@@ -10,6 +10,7 @@ const checkoutButton = document.querySelector('#checkoutButton');
 const paymentDetails = document.querySelector('#paymentDetails');
 const paymentDetailsForm = document.querySelector('#paymentDetailsForm');
 const price = document.querySelector('#price > span');
+const totalAmount = document.querySelector('#totalAmount > p');
 
 async function formSubmit(e) {
 	e.preventDefault();
@@ -67,6 +68,7 @@ checkoutButton.onclick = async () => {
 	await sleep(1000);
 	hideLoader();
 	paymentDetails.style.display = 'flex';
+	totalAmount.innerText = `₹ ${price.innerText}`;
 };
 
 paymentDetails.onclick = () => {
