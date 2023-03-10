@@ -9,11 +9,12 @@ const loader = document.querySelector('#loader');
 const checkoutButton = document.querySelector('#checkoutButton');
 const paymentDetails = document.querySelector('#paymentDetails');
 const paymentDetailsForm = document.querySelector('#paymentDetailsForm');
+const price = document.querySelector('#price > span');
 
 async function formSubmit(e) {
 	e.preventDefault();
 	const cardNumber = document.getElementById('cardNumber').value;
-	const purchaseAmount = document.getElementById('purchaseAmount').value;
+	const purchaseAmount = price.innerText;
 	const threeDsRequestBody = { cardNumber, purchaseAmount };
 	let threeDsResponse;
 
@@ -72,8 +73,27 @@ paymentDetails.onclick = () => {
 	paymentDetails.style.display = 'none';
 };
 
-paymentDetailsForm.onclick = (e) => {
-	e.stopPropagation();
+paymentDetailsForm.onclick = (event) => {
+	event.stopPropagation();
+};
+
+price.onkeydown = (event) => {
+	if (
+		!(
+			// only allow the following keys in the price span
+			(
+				event.code.includes('Digit') ||
+				event.code.includes('Numpad') ||
+				event.code === 'ArrowLeft' ||
+				event.code === 'ArrowRight' ||
+				event.code === 'Backspace' ||
+				event.code === 'Delete' ||
+				event.code === 'Period'
+			)
+		)
+	) {
+		event.preventDefault();
+	}
 };
 
 paymentDetailsForm.onsubmit = formSubmit;

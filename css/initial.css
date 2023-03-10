@@ -10,6 +10,7 @@
 	--success: #ddffd9;
 	--error: #ff6666;
 	--upswing-primary: #372f84;
+	--upswing-primary-800: #1f1b4b;
 }
 
 * {
@@ -166,6 +167,25 @@ img {
 	font-size: 0.75rem;
 }
 
+#price {
+	font-size: 1.25rem;
+	font-weight: 600;
+	background: linear-gradient(
+		to bottom right,
+		var(--primary),
+		var(--background),
+		var(--background)
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+#price > span {
+	min-width: 1ch;
+	outline: none;
+}
+
 #checkoutButton {
 	display: flex;
 	align-items: center;
@@ -211,9 +231,12 @@ img {
 	width: 100%;
 	height: 50%;
 	padding: 16px;
-	border-bottom-left-radius: 32px;
-	border-bottom-right-radius: 32px;
-	background-color: var(--upswing-primary);
+	border-radius: 14px 14px 32px 32px;
+	background: linear-gradient(
+		to bottom right,
+		var(--upswing-primary-800),
+		var(--upswing-primary)
+	);
 	color: white;
 	text-transform: uppercase;
 	letter-spacing: 0.5ch;
@@ -222,7 +245,7 @@ img {
 
 #acsBranding > img {
 	max-height: 50%;
-	max-width: 40%;
+	max-width: 25%;
 }
 
 #paymentDetailsForm {
@@ -230,7 +253,6 @@ img {
 	height: 95%;
 	border-radius: 16px;
 	background: white;
-	overflow: auto;
 }
 
 #formFields {
